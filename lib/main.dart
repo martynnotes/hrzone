@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double reserveHR = 0;
   double lowerZone = 0;
   double upperZone = 0;
+  double targetZone = 0.7;
 
   void calculateHR() {
     if (_formKey.currentState!.validate()) {
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     'FC Repouso', 'Please enter your resting heart rate'),
                 Slider(
                   //value: lowerZone,
-                  value: restingHR + (0.6 * reserveHR),
+                  value: maxHR * 0.6,
                   onChanged: (value) {
                     setState(() {
                       lowerZone = value;
@@ -102,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text('Zona Inferior: ${(lowerZone).round()}%'),
                 Slider(
                   //value: upperZone,
-                  value: restingHR + (0.8 * reserveHR),
+                  value: maxHR * 0.8,
                   onChanged: (value) {
                     setState(() {
                       upperZone = value;

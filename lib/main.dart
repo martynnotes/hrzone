@@ -90,7 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildNumberField(
                     'FC Repouso', 'Please enter your resting heart rate'),
                 Slider(
-                  value: lowerZone,
+                  //value: lowerZone,
+                  value: restingHR + (0.6 * reserveHR),
                   onChanged: (value) {
                     setState(() {
                       lowerZone = value;
@@ -100,7 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Text('Zona Inferior: ${(lowerZone).round()}%'),
                 Slider(
-                  value: upperZone,
+                  //value: upperZone,
+                  value: restingHR + (0.8 * reserveHR),
                   onChanged: (value) {
                     setState(() {
                       upperZone = value;
@@ -167,9 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return null;
         },
         onFieldSubmitted: (value) {
-          if (age != null && restingHR != null) {
-            calculateHR();
-          }
+          calculateHR();
         },
       ),
     );
